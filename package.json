@@ -2,15 +2,23 @@
   "name": "febreze-node",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "index.html",
+=======
+  "main": "index.js",
+>>>>>>> 473c26fd702d672c8986246fb39de183d0ae0efe
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Scentsation",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "express": "^4.15.0",
     "jquery": "^3.1.1",
     "jsdom": "^9.11.0"
+=======
+    "express": "^4.15.0"
+>>>>>>> 473c26fd702d672c8986246fb39de183d0ae0efe
   }
 }
