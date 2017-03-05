@@ -2,6 +2,7 @@ var express = require('express')
 var bodyParser = require('body-parser');
 var app = express()
 var path = __dirname + "/public";
+var gsjson = require('google-spreadsheet-to-json');
 
 app.use(express.static(path));
 app.use(bodyParser.json());
@@ -9,6 +10,39 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     res.sendFile(path + "/index.html");
+})
+
+app.get('/json', function(){
+  // GET /v4/spreadsheets/1NTY5ToSoIQCkZDceQ5RLVdaKP74TzE30tp729rfrYn8/values/Sheet1!A1:D5 HTTP/1.1
+  // Host: sheets.googleapis.com
+  // Content-length: 0
+  // Authorization: Bearer ya29.GlsFBAvgyayvi8dgNNL32oQoExXN6smi4DFk69sv21mRU2DS2wVMBjK70tG94cR2VMOAxgP-YhQ8v5BpRYEUiW_NaICb7KAJ5zvdzYFHbWRBh45cuIu9hcENeq6b
+  // HTTP/1.1 200 OK
+  // Content-length: 132
+  // X-xss-protection: 1; mode=block
+  // Content-location: https://sheets.googleapis.com/v4/spreadsheets/1NTY5ToSoIQCkZDceQ5RLVdaKP74TzE30tp729rfrYn8/values/Sheet1!A1:D5
+  // X-goog-trace-id: 96b86a7e046a6f2ed2841928df643dc8
+  // Transfer-encoding: chunked
+  // Vary: Origin, X-Origin, Referer
+  // Server: ESF
+  // -content-encoding: gzip
+  // Cache-control: private
+  // Date: Sun, 05 Mar 2017 12:26:53 GMT
+  // X-frame-options: SAMEORIGIN
+  // Alt-svc: quic=":443"; ma=2592000; v="36,35,34"
+  // Content-type: application/json; charset=UTF-8
+  // {
+  //   "range": "Sheet1!A1:D5",
+  //   "values": [
+  //     [
+  //       "bantha"
+  //     ],
+  //     [
+  //       "fodder"
+  //     ]
+  //   ],
+  //   "majorDimension": "ROWS"
+  // }
 })
 
 app.listen(3000, function () {
