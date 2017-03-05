@@ -1,8 +1,11 @@
 var express = require('express')
+var bodyParser = require('body-parser');
 var app = express()
 var path = __dirname + "/public";
 
 app.use(express.static(path));
+app.use(bodyParser.json());
+
 
 app.get('/', function (req, res) {
     res.sendFile(path + "/index.html");
@@ -12,7 +15,8 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
 
-app.get('/lights', function(){
+app.get('/lights', function(req, res){
+  var lightNum = req.query.num;
 
   var http = require("https");
 
@@ -43,7 +47,7 @@ app.get('/lights', function(){
     });
 
     req.write(JSON.stringify([ { DeviceAction: 'led_mode=1' },
-      { DeviceAction: 'led_color=0,1,4,4,4' } ]));
+      { DeviceAction: 'led_color=0,' + lightNum + ',4,4,4' } ]));
 
     req.end();
 
