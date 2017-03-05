@@ -43,7 +43,7 @@ app.get('/lights', function(){
     });
 
     req.write(JSON.stringify([ { DeviceAction: 'led_mode=1' },
-      { DeviceAction: 'led_color=0,9,4,4,4' } ]));
+      { DeviceAction: 'led_color=0,1,4,4,4' } ]));
 
     req.end();
 
